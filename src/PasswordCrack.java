@@ -22,6 +22,7 @@ public class PasswordCrack {
         catch (NullPointerException ex){
             System.out.println("Invalid input");
         }
+
         run();
     }
     /* scan input file arguments and store */
@@ -50,6 +51,7 @@ public class PasswordCrack {
     public static void readDictFile() throws FileNotFoundException {
         if(verbose) System.out.println("Creating Dictionary...");
         Scanner scan = new Scanner(new FileInputStream(dictionaryFile));
+        dictionary = new ArrayList<String>();
         while(scan.hasNextLine()){
             dictionary.add(scan.nextLine().replaceAll("\n", ""));
         }
@@ -59,6 +61,7 @@ public class PasswordCrack {
     public static void readUserFile() throws FileNotFoundException {
         if(verbose) System.out.println("Reading File...");
         Scanner scan = new Scanner(new FileInputStream(inputFile));
+        users = new ArrayList<User>();
         while(scan.hasNextLine()){
             String line = scan.nextLine();
             User user = parsePWLine(line);
